@@ -73,7 +73,7 @@ namespace ReplicationTransformCleaner.FileReaders
 
                 fileContent = null;
 
-                File.Move(errorFile, _errorArchiveDirectory + Path.GetFileName(errorFile));
+                File.Move(errorFile, _errorArchiveDirectory + Path.GetFileName(errorFile), true);
             }
         }
 
