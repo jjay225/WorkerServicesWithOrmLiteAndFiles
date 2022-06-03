@@ -39,7 +39,7 @@ namespace ReplicationTransformCleaner
                 _logger.LogInformation("WorkerTransaction running at: {time}", DateTimeOffset.Now);
                 _paymentarrangementFileReaderService.ReadFile();
 
-                await Task.Delay(3000, stoppingToken);
+                await Task.Delay(5000, stoppingToken);
             }
         }
     }

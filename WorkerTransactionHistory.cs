@@ -39,7 +39,7 @@ namespace ReplicationTransformCleaner
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 _transactionHistoryFileReaderService.ReadFile();
 
-                await Task.Delay(2000, stoppingToken);
+                await Task.Delay(6000, stoppingToken);
             }
         }
     }

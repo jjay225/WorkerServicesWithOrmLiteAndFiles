@@ -42,7 +42,7 @@ namespace ReplicationTransformCleaner.FileReaders
 
             if (!errorFiles.Any())
             {
-                _logger.LogWarning("No files found!");
+                _logger.LogWarning("Transaction File Reader: No files found!");
             }
 
             foreach (var errorFile in errorFiles)
@@ -52,6 +52,11 @@ namespace ReplicationTransformCleaner.FileReaders
 
                 foreach (var fileLine in fileContent)
                 {
+                    if (String.IsNullOrEmpty(fileLine))
+                    {
+                        break;
+                    }
+
                     var dataLen = fileLine.IndexOf(",");
                     var txId = fileLine[..dataLen];
                     _logger.LogInformation("Transaction {TxId}", txId);
