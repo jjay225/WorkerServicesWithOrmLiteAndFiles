@@ -11,7 +11,9 @@ namespace ReplicationTransformCleaner
 {
     public class Program
     {
-        private const string ExecutablePath = @"D:\Code\Personal\Samples\WorkerServicesWithOrmLiteAndFiles\bin\Release\netcoreapp3.1\publish\win-x64\";
+        //private const string ExecutablePath = @"D:\Code\Personal\Samples\WorkerServicesWithOrmLiteAndFiles\bin\Release\netcoreapp3.1\publish\win-x64\";
+
+        private const string ExecutablePath = @"C:\Program Files (x86)\PayM8\ReplicationTransformCleaner\";
 
         public static void Main(string[] args)
         {
@@ -26,10 +28,6 @@ namespace ReplicationTransformCleaner
             try
             {
                 Log.Information("Starting up the service");
-                Log.Information("Service Base1: {BasePath}", AppContext.BaseDirectory);
-                Log.Information("Service Base2: {BasePath}", System.Reflection.Assembly.GetEntryAssembly().Location);
-                Log.Information("Service Base3: {BasePath}", AppDomain.CurrentDomain.BaseDirectory);
-                Log.Information("Service Base4: {BasePath}", System.Reflection.Assembly.GetExecutingAssembly().Location);
                 CreateHostBuilder(args).Build().Run();
                 return;
             }

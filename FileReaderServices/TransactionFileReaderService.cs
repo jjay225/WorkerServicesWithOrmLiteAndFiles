@@ -42,7 +42,8 @@ namespace ReplicationTransformCleaner.FileReaders
 
             if (!errorFiles.Any())
             {
-                _logger.LogWarning("Transaction File Reader: No files found!");
+                //_logger.LogWarning("Transaction File Reader: No files found!");
+                return;
             }
 
             foreach (var errorFile in errorFiles)

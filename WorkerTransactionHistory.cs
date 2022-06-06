@@ -36,7 +36,6 @@ namespace ReplicationTransformCleaner
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 _transactionHistoryFileReaderService.ReadFile();
 
                 await Task.Delay(6000, stoppingToken);
