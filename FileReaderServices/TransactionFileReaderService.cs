@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ReplicationTransformCleaner.FileReaders
@@ -48,7 +49,7 @@ namespace ReplicationTransformCleaner.FileReaders
 
             foreach (var errorFile in errorFiles)
             {
-                var fileContent = File.ReadLines(errorFile);
+                var fileContent = GetFileLines(errorFile);
                 _logger.LogInformation("Transaction File name, {fileName}", Path.GetFileName(errorFile));
 
                 foreach (var fileLine in fileContent)
@@ -84,6 +85,20 @@ namespace ReplicationTransformCleaner.FileReaders
             }
         }
 
+        private IEnumerable<string> GetFileLines(string errorFile)
+        {
+            try
+            {
+                return File.ReadLines(errorFile);
+            }
+            catch (IOException ex)
+            {
+
+                _logger.LogWarning($"Transaction File locked! File name: {errorFile}. Additional info: {ex.Message}");
+                Thread.Sleep(1000);
+                return File.ReadLines(errorFile);
+            }
+        }
         public void PingPong()
         {
             _logger.LogDebug("Ping! Pong from Transaction!!");

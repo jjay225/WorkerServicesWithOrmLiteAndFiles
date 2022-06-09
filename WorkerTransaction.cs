@@ -38,7 +38,7 @@ namespace ReplicationTransformCleaner
             {
                 _transactionFileReaderService.ReadFile();
 
-                await Task.Delay(3000, stoppingToken);
+                await Task.Delay(3500, stoppingToken);
             }
         }
     }
